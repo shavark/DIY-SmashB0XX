@@ -4,7 +4,12 @@
  * Code written by Simple Controllers and this code is open source.
  * Meaning its free to share, improve on, or anything you like!
  * Just remember to mention you used my code!
- * Edited by Danny for SmashB0XX
+ * Originally edited by Danny for SmashB0XX pinouts
+ *
+ * [zandm7]
+ * Edited for Smash Box
+ * Changed default mode to Ultimate (hold B while plugging in for Melee)
+ * Optimized mod values for Ultimate
  *
  * [Crane]
  * For Smash4/U mode,
@@ -36,7 +41,7 @@
  *  line 93 for Melee, line 129 for Ultimate, or line 134 for PM. The official B0XX methods are the default, and I
  *  advise against editing them. currentSOCD can set to "Neutral", "TwoIP", or "TwoIPNoReactivate", without the quotes.
  */
-//This makes the controller bidirection data line on pin number8
+//This makes the controller bidirection data line on pin number52
 CGamecubeConsole GamecubeConsole(52);      //Defines a "Gamecube Console" sending data to the console on pin 52
 Gamecube_Data_t d = defaultGamecubeData;   //Structure for data to be sent to console
 

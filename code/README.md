@@ -1,3 +1,36 @@
+# Tutorial (how to configure and flash)
+
+This firmware will work out of the box, no edits required, with your Smash Box, and flashing it is very easy. Here's what you'll need:
+
+1. Arduino IDE (compatible with Windows, Mac, and Linux): https://www.arduino.cc/en/Main/Software
+2. Smash Box Designer and Firmware Updater: https://cdn.shopify.com/s/files/1/0166/4408/files/Smash_Box_Designer_Beta_4.03.zip?44
+3. Nicohood Library: https://github.com/NicoHood/Nintendo/archive/master.zip
+
+## Smash Box Drivers and Setup:
+
+1. Go to the directory you unzipped the Smash Box Designer software to, and open the Documentation and Drivers directory. If you have a gen 1 or alpha Smash Box, you need to install the CH340 drivers .exe; if you have a gen 2 Smash Box, install the Teensy drivers .exe. If the driver installer says that you don't need to install drivers, great, just close the window and move on.
+2. Plug in your Smash Box to your PC using the included USB cable. Let Windows install drivers if it hasn't already.
+3. Find the COM port that your Smash Box is plugged into. An easy way to do this is to unplug your Smash Box, open up the Smash Box Firmware Updater, and note the COM ports listed in the "Ignore COM Ports" box. Close the Firmware Updater, plug your Smash Box back in, and open it again. Whichever port wasn't there before is the port your Smash Box is plugged into.
+4. To be safe, if you haven't configured your Smash Box before, install the Gen2 Hotfix and then use the Firmware Updater (being sure to select the correct COM port both times).
+5. Open up the Smash Box Designer software and go to the Options tab. Click the button that says "Set to Program Mode". You may hear the Windows sound for a device being unplugged and replugged. Your Smash Box is now ready for flashing!
+
+### Steps:
+
+1. Before anything else, make sure you have installed the Arduino IDE and unzipped the Smash Box Designer .zip into an easy-to-find directory. The Nicohood library does not need to be unzipped.
+2. Download the DIYB0XX.ino file from this repo (located in code/DIYB0XX) and open it in the Arduino IDE. If it asks you to create a DIYB0XX directory, say "Yes" to that.
+3. In the Tools dropdown of the Arduino IDE, hover over Board and then select and click "Arduino/Genuino Mega or Mega 2560" from the dropdown.
+4. In the Tools dropdown again, hover over Processor and select and click "ATmega2560" from the dropdown.
+5. In the Tools dropdown again, hover over Port and select the COM port that your Smash Box is plugged into. If the port listed does not say "Arduino/Genuino Mega or Mega2560" or something similar after it, you probably haven't set your Smash Box to Program Mode, so make sure you do that before continuing.
+6. In the greenish-blue top menu bar, select and click the right-arrow icon.
+7. If all goes well, a lot of things should start happening in the terminal at the bottom of the Arduino IDE. After a short while (<30 seconds, usually), it should say "Done uploading" right above the terminal. Once it does, you can unplug your new "SmashB0XX" and go to town!
+
+## Notes:
+
+* This version of DIYB0XX uses Smash Ultimate as the default mode. To use Melee mode, hold down B while plugging in. To use PM mode, hold X while plugging in.
+* If you would like to use WASD instead of right pinky for Up, put two slashes in front of line 76 and delete the two slashes in front of line 78. If you want to do this, I also suggest remapping Y or R to right pinky (since your right pinky will have nothing to do otherwise). For Y, change the number in line 64 to 45. For R, change the number in line 68 to 45.
+
+# Crane's README:
+
 #### This program was originally made by simple. The edits I have made are listed below, and I have received the permission of its creator and other editors to add it to this repo.
 
 This utilizes the Nicohood Library. This were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto.
