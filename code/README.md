@@ -10,16 +10,21 @@ Before anything else, make sure you have installed the Arduino IDE and unzipped 
 
 ## Smash Box Drivers and Setup:
 
-1. Go to the directory you unzipped the Smash Box Designer software to, and open the Documentation and Drivers directory. If you have a gen 1 or alpha Smash Box, you need to install the CH340 drivers.exe; if you have a gen 2 Smash Box, install the Teensy drivers.exe. If the driver installer says that you don't need to install drivers, great, just close the window and move on.
+1. Go to the directory you unzipped the Smash Box Designer software to, and open the Documentation and Drivers directory. 
+  * If you have a gen 1 or alpha Smash Box, you need to install the CH340 drivers.exe
+  * If you have a gen 2 Smash Box, install the Teensy drivers.exe. 
+   If the driver installer says that you don't need to install drivers, great, just close the window and move on.
 2. Plug in your Smash Box to your PC using the included USB cable. Let Windows install drivers if it hasn't already.
-3. Find the COM port that your Smash Box is plugged into. An easy way to do this is to unplug your Smash Box, open up the Smash Box Firmware Updater, and note the COM ports listed in the "Ignore COM Ports" box. Close the Firmware Updater, plug your Smash Box back in, and open it again. Whichever port wasn't there before is the port your Smash Box is plugged into.
+3. Find the COM port that your Smash Box is plugged into. 
+   * An easy way to do this is to unplug your Smash Box, open up the Smash Box Firmware Updater, and note the COM ports listed in the "Ignore COM Ports" box. Close the Firmware Updater, plug your Smash Box back in, and open it again. Whichever port wasn't there before is the port your Smash Box is plugged into.
 4. To be safe, if you haven't configured your Smash Box before, install the Gen2 Hotfix and then use the Firmware Updater (being sure to select the correct COM port both times).
 5. Open up the Smash Box Designer software and go to the Options tab. Click the button that says "Set to Program Mode". You may hear the Windows sound for a device being unplugged and replugged. Your Smash Box is now ready for flashing!
 
 ## Steps:
 
 1. Download the DIYB0XX.ino file from this repo (located in code/DIYB0XX) and open it in the Arduino IDE. If it asks you to create a DIYB0XX directory, say "Yes" to that.
-2. Install the Nicohood library (required to build the code): go to Sketch > Include Library > click Add .ZIP Library. Then find and select the Nintendo-master.zip file you downloaded earlier.
+2. Install the Nicohood library (required to build the code)
+   * Sketch > Include Library > click Add .ZIP Library. Then find and select the Nintendo-master.zip file you downloaded earlier.
 3. Tools > Board > click "Arduino/Genuino Mega or Mega 2560".
 4. Tools > Processor > click "ATmega2560".
 5. Tools > Port > select the COM port that your Smash Box is plugged into. If the port listed does not say "Arduino/Genuino Mega or Mega2560" or something similar after it, you probably haven't set your Smash Box to Program Mode, so make sure you do that before continuing.
