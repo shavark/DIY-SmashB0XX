@@ -18,11 +18,12 @@ This firmware will work out of the box, no edits required, with your Smash Box, 
 
 1. Before anything else, make sure you have installed the Arduino IDE and unzipped the Smash Box Designer .zip into an easy-to-find directory. The Nicohood library does not need to be unzipped.
 2. Download the DIYB0XX.ino file from this repo (located in code/DIYB0XX) and open it in the Arduino IDE. If it asks you to create a DIYB0XX directory, say "Yes" to that.
-3. In the Tools dropdown of the Arduino IDE, hover over Board and then select and click "Arduino/Genuino Mega or Mega 2560" from the dropdown.
-4. In the Tools dropdown again, hover over Processor and select and click "ATmega2560" from the dropdown.
-5. In the Tools dropdown again, hover over Port and select the COM port that your Smash Box is plugged into. If the port listed does not say "Arduino/Genuino Mega or Mega2560" or something similar after it, you probably haven't set your Smash Box to Program Mode, so make sure you do that before continuing.
-6. In the greenish-blue top menu bar, select and click the right-arrow icon.
-7. If all goes well, a lot of things should start happening in the terminal at the bottom of the Arduino IDE. After a short while (<30 seconds, usually), it should say "Done uploading" right above the terminal. Once it does, you can unplug your new "SmashB0XX" and go to town!
+3. Install the Nicohood library (required to build the code). To do so, go to the Sketch dropdown of the Arduino IDE, hover over Include Library, and click the Add .ZIP Library option. Then find and select the Nintendo-master.zip file you downloaded earlier.
+4. In the Tools dropdown of the Arduino IDE, hover over Board and then select and click "Arduino/Genuino Mega or Mega 2560" from the dropdown.
+5. In the Tools dropdown again, hover over Processor and select and click "ATmega2560" from the dropdown.
+6. In the Tools dropdown again, hover over Port and select the COM port that your Smash Box is plugged into. If the port listed does not say "Arduino/Genuino Mega or Mega2560" or something similar after it, you probably haven't set your Smash Box to Program Mode, so make sure you do that before continuing.
+7. In the greenish-blue top menu bar, select and click the right-arrow icon.
+8. If all goes well, a lot of things should start happening in the terminal at the bottom of the Arduino IDE. After a short while (<30 seconds, usually), it should say "Done uploading" right above the terminal. Once it does, you can unplug your new "SmashB0XX" and go to town!
 
 ## Notes:
 
