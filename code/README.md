@@ -14,7 +14,7 @@ This firmware will work out of the box, no edits required, with your Smash Box, 
 4. To be safe, if you haven't configured your Smash Box before, install the Gen2 Hotfix and then use the Firmware Updater (being sure to select the correct COM port both times).
 5. Open up the Smash Box Designer software and go to the Options tab. Click the button that says "Set to Program Mode". You may hear the Windows sound for a device being unplugged and replugged. Your Smash Box is now ready for flashing!
 
-### Steps:
+## Steps:
 
 1. Before anything else, make sure you have installed the Arduino IDE and unzipped the Smash Box Designer .zip into an easy-to-find directory. The Nicohood library does not need to be unzipped.
 2. Download the DIYB0XX.ino file from this repo (located in code/DIYB0XX) and open it in the Arduino IDE. If it asks you to create a DIYB0XX directory, say "Yes" to that.
@@ -29,6 +29,10 @@ This firmware will work out of the box, no edits required, with your Smash Box, 
 
 * This version of DIYB0XX uses Smash Ultimate as the default mode. To use Melee mode, hold down B while plugging in. To use PM mode, hold X while plugging in.
 * If you would like to use WASD instead of right pinky for Up, put two slashes in front of line 76 and delete the two slashes in front of line 78. If you want to do this, I also suggest remapping Y or R to right pinky (since your right pinky will have nothing to do otherwise). For Y, change the number in line 64 to 45. For R, change the number in line 68 to 45.
+
+## Restoring your Smash Box to the original firmware:
+
+This is pretty easy to do. All you have to do is plug in your Smash Box, open up the Firmware Updater from the Smash Box Designer folder, and run it. That should restore your Smash Box to its original firmware, and you can go back to using Smash Box Designer to configure it yourself.
 
 # Crane's README:
 
