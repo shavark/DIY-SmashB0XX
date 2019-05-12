@@ -27,6 +27,6 @@ https://www.hitboxarcade.com/products/smash-box
 
 ### Contact Us
 
-To contact any of the people who are credited in this repo, including Crane, myself, simple, Danny, and Snapple, join the B0XX discord here.
+To contact any of the people who are credited in this repo, including Crane, myself, simple, Danny, and Snapple, join the B0XX discord here. Find me directly on Discord @zandm7#6078!
 
 https://discord.gg/6wcEaDU
