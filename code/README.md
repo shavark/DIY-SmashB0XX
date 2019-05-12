@@ -34,7 +34,7 @@ Before anything else, make sure you have installed the Arduino IDE and unzipped 
 ## Notes:
 
 * This version of DIYB0XX uses Smash Ultimate as the default mode. To use Melee mode, hold down B while plugging in. To use PM mode, hold X while plugging in.
-* If you would like to use WASD instead of right pinky for Up, put two slashes in front of line 76 and delete the two slashes in front of line 78. 
+* If you would like to use WASD instead of right pinky for Up, put two slashes in front of line 76 and delete the two slashes in front of line 78 (in DIYB0XX.ino). 
   * If you want to do this, I also suggest remapping Y or R to right pinky (since your right pinky will have nothing to do otherwise). For Y, change the number in line 64 to 45. For R, change the number in line 68 to 45.
 
 ## Restoring your Smash Box to the original firmware:
