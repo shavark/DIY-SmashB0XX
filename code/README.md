@@ -13,7 +13,7 @@ Before anything else, make sure you have installed the Arduino IDE and unzipped 
 1. Go to the directory you unzipped the Smash Box Designer software to, and open the Documentation and Drivers directory. 
   * If you have a gen 1 or alpha Smash Box, you need to install the CH340 drivers.exe
   * If you have a gen 2 Smash Box, install the Teensy drivers.exe. 
-   If the driver installer says that you don't need to install drivers, great, just close the window and move on.
+  * If the driver installer says that you don't need to install drivers, great, just close the window and move on.
 2. Plug in your Smash Box to your PC using the included USB cable. Let Windows install drivers if it hasn't already.
 3. Find the COM port that your Smash Box is plugged into. 
    * An easy way to do this is to unplug your Smash Box, open up the Smash Box Firmware Updater, and note the COM ports listed in the "Ignore COM Ports" box. Close the Firmware Updater, plug your Smash Box back in, and open it again. Whichever port wasn't there before is the port your Smash Box is plugged into.
