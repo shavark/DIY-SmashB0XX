@@ -428,6 +428,10 @@ if (currentSOCD == Neutral)
     if((leftOne || rightOne) && pinB){
       pinxAxis = 128 + ((rightOne - leftOne)*47); //allows for shortened Palu side-b
     }
+    //Palu short up-b
+    if((upOne || downOne) && !(leftOne || rightOne) && pinB){
+      pinxAxis = 128 + ((rightOne - leftOne)*41);
+    }
 
 /*******************/
 
