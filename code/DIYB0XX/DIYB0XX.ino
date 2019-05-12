@@ -37,7 +37,7 @@
  *  advise against editing them. currentSOCD can set to "Neutral", "TwoIP", or "TwoIPNoReactivate", without the quotes.
  */
 //This makes the controller bidirection data line on pin number8
-CGamecubeConsole GamecubeConsole(8);      //Defines a "Gamecube Console" sending data to the console on pin 8
+CGamecubeConsole GamecubeConsole(52);      //Defines a "Gamecube Console" sending data to the console on pin 52
 Gamecube_Data_t d = defaultGamecubeData;   //Structure for data to be sent to console
 
 enum game
@@ -58,39 +58,42 @@ enum SOCD
 CGamecubeController GamecubeController1(7);
 
 //This is the pinout of the controller.  Can be changed to your liking.  I may have mixed up some of the tilt pins but you can change that physically in your build or through the code.  Just do test runs along the way.
-const int A = 46;
+const int A = 35;
 const int B = 44;
-const int X = 49;
-const int Y = 31;
-const int Z = 41;
-const int START = 39;
+const int X = 42;
+const int Y = 43;
+const int Z = 7;
+const int START = 50;
 
-const int R = 24;
-const int L = 34;
+const int R = 41;
+const int L = 47;
 //const int RLIGHT = 36; Only if using LightShield Button
 //This is the value of analog shielding 74 is lightest possible on gamecube.  It varies from gamecube to dolphin no idea why.
 //const int RLIGHTv = 74;
 
-const int LEFT = 26;
-const int RIGHT = 40;
-const int UP = 48;
-const int DOWN = 35;
+const int LEFT = 24;
+const int RIGHT = 25;
+const int UP = 45;
+//comment out the above line and uncomment the line below if you want WASD
+//const int UP = 22;
+const int DOWN = 23;
 
-const int MOD1 = 38;
-const int MOD2 = 22;
+const int MOD1 = 28;
+const int MOD2 = 29;
 
-const int CLEFT = 28;
-const int CRIGHT = 50;
-const int CUP = 30;
-const int CDOWN = 51;
+const int CLEFT = 36;
+const int CRIGHT = 37;
+const int CUP = 34;
+const int CDOWN = 46;
 
 bool isLeft = false;
 bool isRight = true;
 bool isHoldingLeft = false;
 bool isHoldingRight = false;
 
-game currentGame = Melee;
-SOCD currentSOCD = TwoIPNoReactivate;
+//Ultimate is default game here
+game currentGame = Ultimate;
+SOCD currentSOCD = TwoIP;
 
 void setup()
 {
@@ -123,10 +126,11 @@ void setup()
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
 
+  //hold B while plugging in to use Melee mode
   if (digitalRead(B) == LOW)
   {
-    currentGame = Ultimate;
-    currentSOCD = TwoIP;
+    currentGame = Melee;
+    currentSOCD = TwoIPNoReactivate;
   }
   if (digitalRead(X) == LOW)
   {
@@ -411,13 +415,13 @@ if (currentSOCD == Neutral)
       pinxAxis = 128 + ((rightOne - leftOne)*53);
     }
     if(upOne || downOne){
-      pinyAxis = 128 + ((upOne - downOne)*51);
+      pinyAxis = 128 + ((upOne - downOne)*50); //allows for crouching on plats
     }
 
 /******************/
 
     if((leftOne || rightOne) && pinB){
-      pinxAxis = 128 + ((rightOne - leftOne)*41);
+      pinxAxis = 128 + ((rightOne - leftOne)*47); //allows for shortened Palu side-b
     }
 
 /*******************/
@@ -467,7 +471,7 @@ if (currentSOCD == Neutral)
       pinxAxis = 128 + ((rightOne - leftOne)*26);
     }
     if(upOne || downOne){
-      pinyAxis = 128 + ((upOne - downOne)*51);
+      pinyAxis = 128 + ((upOne - downOne)*50); //allows for crouching on plats
     }
     //Keeps B Reversals Fair
     if((leftOne || rightOne) && pinB){
@@ -476,7 +480,7 @@ if (currentSOCD == Neutral)
 
     if((leftOne || rightOne) && (upOne || downOne)){
       pinxAxis = 128 + ((rightOne - leftOne)*40);
-      pinyAxis = 128 + ((upOne - downOne)*68);
+      pinyAxis = 128 + ((upOne - downOne)*50); //prevents accidental smashes
     }
 
     //Ambiguous DI
