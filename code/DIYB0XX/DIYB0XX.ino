@@ -66,8 +66,8 @@ CGamecubeController GamecubeController1(7);
 const int A = 35;
 const int B = 44;
 const int X = 42;
-const int Y = 43;
-const int Z = 7;
+const int Y = 7;
+const int Z = 45;
 const int START = 50;
 
 const int R = 41;
@@ -78,9 +78,9 @@ const int L = 47;
 
 const int LEFT = 24;
 const int RIGHT = 25;
-const int UP = 45;
+//const int UP = 45;
 //comment out the above line and uncomment the line below if you want WASD
-//const int UP = 22;
+const int UP = 22;
 const int DOWN = 23;
 
 const int MOD1 = 28;
