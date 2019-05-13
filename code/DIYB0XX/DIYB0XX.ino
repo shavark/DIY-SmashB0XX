@@ -428,10 +428,6 @@ if (currentSOCD == Neutral)
     if((leftOne || rightOne) && pinB){
       pinxAxis = 128 + ((rightOne - leftOne)*47); //allows for shortened Palu side-b
     }
-    //Palu short up-b
-    if((upOne || downOne) && !(leftOne || rightOne) && pinB){
-      pinxAxis = 128 + ((rightOne - leftOne)*41);
-    }
 
 /*******************/
 
@@ -472,6 +468,10 @@ if (currentSOCD == Neutral)
     if((upOne||downOne)&&(cLeft||cRight)){
       pinxAxisC = 128 + ((cRight - cLeft)*65);
       pinyAxisC = 128 + 40;
+    }
+    //Palu short up-b
+    if((upOne || downOne) && !(leftOne || rightOne) && pinB){
+      pinyAxis = 128 + ((upOne - downOne)*42);
     }
   }
 
