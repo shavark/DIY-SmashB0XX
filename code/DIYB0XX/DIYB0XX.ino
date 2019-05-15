@@ -93,8 +93,12 @@ const int CDOWN = 46;
 
 bool isLeft = false;
 bool isRight = true;
+bool isUp = false;
+bool isDown = true;
 bool isHoldingLeft = false;
 bool isHoldingRight = false;
+bool isHoldingUp = false;
+bool isHoldingDown = false;
 
 //Ultimate is default game here
 game currentGame = Ultimate;
@@ -200,6 +204,7 @@ void loop()
 //SOCD method for left/right is 2ip without reactivation
 if (currentSOCD == TwoIPNoReactivate)
 {
+  // X Axis
   if (digitalRead(LEFT) == LOW && isRight == true)
   {
 	//if left is pressed and isRight is true(if you press left while holding right):
@@ -242,11 +247,56 @@ if (currentSOCD == TwoIPNoReactivate)
 	  isLeft = false;
 	  isRight = false;
   }
+  /*************************************/
+  // Y Axis
+  if (digitalRead(DOWN) == LOW && isUp == true)
+  {
+	//if down is pressed and isUp is true(if you press down while holding up):
+		pinyAxis = 128-127;
+		downOne = 1;
+		isHoldingUp = true;
+  }
+  else if (digitalRead(UP) == LOW && isDown == true)
+  {
+	//else, if up is pressed and isDown is true (if you press up while holding down):
+		pinyAxis = 128+127;
+		upOne = 1;
+		isHoldingDown = true;
+  }
+
+  if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW){
+	//if down is not pressed and up is pressed:
+	if(isHoldingUp == false){
+		pinyAxis = 128+127;
+		upOne = 1;
+	}
+    isUp = true;
+    isDown = false;
+	isHoldingDown = false;
+  }
+  if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH){
+	//if down is pressed and up is not pressed:
+	if(isHoldingDown == false){
+		pinyAxis = 128-127;
+		downOne = 1;
+	}
+    isDown = true;
+    isUp = false;
+	isHoldingUp = false;
+  }
+  if (digitalRead(DOWN) == HIGH && digitalRead(UP) == HIGH){
+	  //if neither button is being pressed, set all down/up booleans to false
+	  isHoldingDown = false;
+	  isHoldingUp = false;
+	  isDown = false;
+	  isUp = false;
+  }
 }
 
 //SOCD method for left/right is 2ip
 if (currentSOCD == TwoIP)
 {
+  // X Axis
   if (digitalRead(LEFT) == LOW && isRight == true)
   {
     pinxAxis = 128-127;
@@ -270,6 +320,32 @@ if (currentSOCD == TwoIP)
     isLeft = true;
     isRight = false;
   }
+
+  /*************************************/
+  // Y Axis
+  if (digitalRead(DOWN) == LOW && isUp == true)
+  {
+    pinyAxis = 128-127;
+    downOne = 1;
+  }
+  else if (digitalRead(UP) == LOW && isDown == true)
+  {
+    pinyAxis = 128+127;
+    upOne = 1;
+  }
+
+  if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW){
+    pinyAxis = 128+127;
+    upOne = 1;
+    isUp = true;
+    isDown = false;
+  }
+  if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH){
+    pinyAxis = 128-127;
+    downOne = 1;
+    isDown = true;
+    isUp = false;
+  }
 }
 
 //SOCD method for left/right is neutral
@@ -283,9 +359,6 @@ if (currentSOCD == Neutral)
     pinxAxis = 128-127;
     leftOne = 1;
   }
-}
-
-  //SOCD method for up/down is neutral
   if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW){
     pinyAxis = 128+127;
     upOne = 1;
@@ -294,6 +367,7 @@ if (currentSOCD == Neutral)
     pinyAxis = 128-127;
     downOne = 1;
   }
+}
 
   //Reads CStick pins, same logic as controlstick values.
   if (digitalRead(CLEFT) == HIGH && digitalRead(CRIGHT) == LOW){
@@ -626,60 +700,6 @@ if (currentSOCD == Neutral)
   }
   }
 
-  //Manual Shield Tilt with R
-  if(pinR){
-
-    if(currentGame == Ultimate)
-    {
-      if(downOne || upOne){
-        pinyAxis = 128 + ((upOne - downOne)*51);
-      }
-      if(leftOne || rightOne){
-        pinxAxis = 128 + ((rightOne - leftOne)*51);
-      }
-      if((leftOne || rightOne) && (downOne || upOne)){
-        pinxAxis = 128 + ((rightOne - leftOne)*51);
-        pinyAxis = 128 + ((upOne - downOne)*51);
-      }
-    }
-    else
-    {
-      if(downOne || upOne){
-        pinyAxis = 128 + ((upOne - downOne)*52);
-      }
-      if(leftOne || rightOne){
-        pinxAxis = 128 + ((rightOne - leftOne)*55);
-      }
-      if((leftOne || rightOne) && (downOne || upOne)){
-        pinxAxis = 128 + ((rightOne - leftOne)*52);
-        pinyAxis = 128 + ((upOne - downOne)*52);
-      }
-    }
-
-    //Wavedash with R and Mod1
-    if(((leftOne || rightOne) && downOne)&& mod1){
-      if (currentGame == Melee)
-      {
-        pinxAxis = 128 + ((rightOne - leftOne)*110);
-        pinyAxis = 128 - 65;
-      }
-      if (currentGame == Ultimate)
-      {
-        pinxAxis = 128 + ((rightOne - leftOne)*110);
-        pinyAxis = 128 - 65;
-      }
-      if (currentGame == PM)
-      {
-        pinxAxis = 128 + ((rightOne - leftOne)*110);
-        pinyAxis = 128 - 65;
-      }
-    }
-    //Wavedash with R and Mod2
-    if(((leftOne || rightOne) && downOne)&& mod2){
-      pinxAxis = 128 + ((rightOne - leftOne)*65);
-      pinyAxis = 128 - 110;
-    }
-  }
 
   if(pinL){
 
@@ -744,6 +764,62 @@ if (currentSOCD == Neutral)
       pinyAxis = 128 - 110;
     }
   }
+
+  //Manual Shield Tilt with R
+  if(pinR){
+
+    if(currentGame == Ultimate)
+    {
+      if(downOne || upOne){
+        pinyAxis = 128 + ((upOne - downOne)*51);
+      }
+      if(leftOne || rightOne){
+        pinxAxis = 128 + ((rightOne - leftOne)*51);
+      }
+      if((leftOne || rightOne) && (downOne || upOne)){
+        pinxAxis = 128 + ((rightOne - leftOne)*51);
+        pinyAxis = 128 + ((upOne - downOne)*51);
+      }
+    }
+    else
+    {
+      if(downOne || upOne){
+        pinyAxis = 128 + ((upOne - downOne)*52);
+      }
+      if(leftOne || rightOne){
+        pinxAxis = 128 + ((rightOne - leftOne)*55);
+      }
+      if((leftOne || rightOne) && (downOne || upOne)){
+        pinxAxis = 128 + ((rightOne - leftOne)*52);
+        pinyAxis = 128 + ((upOne - downOne)*52);
+      }
+    }
+
+    //Wavedash with R and Mod1
+    if(((leftOne || rightOne) && downOne)&& mod1){
+      if (currentGame == Melee)
+      {
+        pinxAxis = 128 + ((rightOne - leftOne)*110);
+        pinyAxis = 128 - 65;
+      }
+      if (currentGame == Ultimate)
+      {
+        pinxAxis = 128 + ((rightOne - leftOne)*110);
+        pinyAxis = 128 - 65;
+      }
+      if (currentGame == PM)
+      {
+        pinxAxis = 128 + ((rightOne - leftOne)*110);
+        pinyAxis = 128 - 65;
+      }
+    }
+    //Wavedash with R and Mod2
+    if(((leftOne || rightOne) && downOne)&& mod2){
+      pinxAxis = 128 + ((rightOne - leftOne)*65);
+      pinyAxis = 128 - 110;
+    }
+  }
+
 
   if(pinZ){
     if(upOne && (leftOne || rightOne)){
