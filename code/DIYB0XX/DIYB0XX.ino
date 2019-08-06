@@ -17,7 +17,7 @@ uint8_t fTwoIP(bool isLOW, bool isHIGH, bool& wasLOW, bool& wasHIGH);
 uint8_t fNeutral(bool isLOW, bool isHIGH);
 
 // Change the number inside the parentheses to whichever pin you have your data line plugged into.
-CGamecubeConsole GamecubeConsole(A5);
+CGamecubeConsole GamecubeConsole(52);
 Gamecube_Data_t d = defaultGamecubeData;
 
 enum game
@@ -56,30 +56,30 @@ bool lockCDOWN = false;
 
 // This is the mode that will occur when you plug in while holding down nothing.
 // Change it if you want to.
-game currentGame = Melee;
+game currentGame = Ultimate;
 SOCD currentSOCD = TwoIPNoReactivate;
 
 // Here are your pin assignments. Change the number after the equals sign to wherever each button is plugged into.
-const int L = 16;
-const int LEFT = 1;
-const int DOWN = 0;
-const int RIGHT = 4;
-const int MOD1 = 5;
-const int MOD2 = 6;
+const int L = 47;
+const int LEFT = 24;
+const int DOWN = 23;
+const int RIGHT = 25;
+const int MOD1 = 28;
+const int MOD2 = 29;
 
-const int START = 7;
-const int B = A2;
-const int X = A1;
-const int Z = A0;
-const int UP = 13;
-const int R = A4;
-const int Y = A3;
+const int START = 50;
+const int B = 44;
+const int X = 42;
+const int Z = 7;
+const int UP = 45;
+const int R = 41;
+const int Y = 43;
 
-const int CDOWN = 12;
-const int A = 15;
-const int CRIGHT = 14;
-const int CLEFT = 9;
-const int CUP = 8;
+const int CDOWN = 46;
+const int A = 35;
+const int CRIGHT = 37;
+const int CLEFT = 36;
+const int CUP = 34;
 
 //const int DPADSWITCH = XX;
 
@@ -112,7 +112,7 @@ void setup()
   // to Ultimate, with 2ip no reactivation. Change any of these you want to.
   if (digitalRead(B) == LOW)
   {
-    currentGame = Ultimate;
+    currentGame = Melee;
     currentSOCD = TwoIPNoReactivate;
   }
 
