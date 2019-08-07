@@ -70,10 +70,10 @@ const int MOD2 = 29;
 const int START = 50;
 const int B = 44;
 const int X = 42;
-const int Z = 7;
+const int Z = 43;
 const int UP = 45;
 const int R = 41;
-const int Y = 43;
+const int Y = 7;
 
 const int CDOWN = 46;
 const int A = 35;
